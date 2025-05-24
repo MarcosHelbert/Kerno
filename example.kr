@@ -1,0 +1,33 @@
+// função concorrente
+function main() {
+    const numero = 42; // variavel imutavel
+    var algo = "texto"; // variavel mutavel
+
+    // os tipos podem ser setados de forma automatica de acorodo com o valor da variavel, ou de forma manual como o exemplo abaixo
+    const texto: string = "texto"; // variavel do tipo string imutavel
+
+    // o ";" é opcional
+
+    return numero;
+}
+
+// função com tipagem e argumentos
+function add(a: int, b: int): int {
+    return a + b;
+}
+
+function add(a: int = 1, b: int = 2, c: int = 3): int {
+    return a + b + 3;
+}
+add()
+add(3, 6, 10)
+add(a = 3, c = 8)
+
+// função assincrona
+async function amain() {
+    const numero = 42;
+
+    return numero;
+}
+
+main()
