@@ -10,6 +10,14 @@ pub enum Token {
     #[token("return")] Return,
     #[token("import")] Import,
 
+    // ─── Controle de fluxo ────────────────────────────────────
+    #[token("for")] For,
+    #[token("while")] While,
+    #[token("if")] If,
+    #[token("else")] Else,
+    #[token("break")] Break,
+    #[token("continue")] Continue,
+
     // ─── Tipos primitivos ─────────────────────────────────────
     #[token("int")] IntegerType,
     #[token("string")] StringType,

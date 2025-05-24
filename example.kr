@@ -1,33 +1,50 @@
-// função concorrente
-function main() {
-    const numero = 42; // variavel imutavel
-    var algo = "texto"; // variavel mutavel
-
-    // os tipos podem ser setados de forma automatica de acorodo com o valor da variavel, ou de forma manual como o exemplo abaixo
-    const texto: string = "texto"; // variavel do tipo string imutavel
-
-    // o ";" é opcional
-
-    return numero;
-}
-
-// função com tipagem e argumentos
-function add(a: int, b: int): int {
+function soma(a: int, b: int): int {
     return a + b;
 }
 
-function add(a: int = 1, b: int = 2, c: int = 3): int {
-    return a + b + 3;
-}
-add()
-add(3, 6, 10)
-add(a = 3, c = 8)
-
-// função assincrona
-async function amain() {
-    const numero = 42;
-
-    return numero;
+async function buscaDados(url: string, timeout?: int): string {
+    return "resultado fictício";
 }
 
-main()
+function processaLista(itens: list<int>): int {
+    var total: int = 0;
+    for (var i in itens) {
+        total = total + i;
+    }
+    return total;
+}
+
+function criaMapa(): map<string, int> {
+    var mapa: map<string, int> = {
+        "chave1": 10,
+        "chave2": 20,
+    };
+    return mapa;
+}
+
+function testeTupla(): tuple<int, string, bool> {
+    return (42, "resposta", true);
+}
+
+function usaSet(conjunto: set<int>) {
+    // só pra mostrar que recebeu set
+}
+
+function main() {
+    var x: int = 5;
+    var y: int = 7;
+    var resultado: int = soma(x, y);
+
+    var lista: list<int> = [1, 2, 3, 4, 5];
+    var totalLista: int = processaLista(lista);
+
+    var mapa = criaMapa();
+
+    var t = testeTupla();
+
+    usaSet({1, 2, 3, 4});
+
+    var resposta: string = buscaDados("http://exemplo.com");
+
+    return;
+}

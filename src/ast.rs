@@ -91,6 +91,24 @@ pub enum Statement {
     },
     Return(Option<Expression>),
     ExpressionStmt(Expression),
+
+    For {
+        initializer: Option<Box<Statement>>,
+        condition: Option<Expression>,
+        increment: Option<Expression>,
+        body: Vec<Statement>,
+    },
+    While {
+        condition: Expression,
+        body: Vec<Statement>,
+    },
+    If {
+        condition: Expression,
+        then_branch: Vec<Statement>,
+        else_branch: Option<Vec<Statement>>,
+    },
+    Break,
+    Continue,
 }
 
 #[allow(dead_code)]
