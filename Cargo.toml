@@ -7,4 +7,5 @@ edition = "2024"
 [build-dependencies]
 
 [dependencies]
+ariadne = "0.5.1"
 logos = "0.15.0"
