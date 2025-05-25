@@ -1,20 +1,18 @@
 mod lexer;
-mod ast;
+mod parser;
 
 use std::fs;
-
 use lexer::lexer;
 
 fn main() {
     let source = fs::read_to_string("example.kr").expect("Erro ao ler arquivo");
 
-    let tokens = lexer(&source);
-    for token in &tokens {
+    let tokens = &source;
+
+    let mut lexer = lexer(tokens);
+
+    println!("Tokens:");
+    for token in lexer.iter() {
         println!("{:?}", token);
     }
-
-    // match parser.parse(lexer) {
-    //     Ok(ast) => println!("{:#?}", ast),
-    //     Err(err) => eprintln!("Erro de parsing: {:?}", err),
-    // }
 }

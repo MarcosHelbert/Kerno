@@ -1,7 +1,10 @@
 [package]
 name = "kerno"
 version = "0.1.0"
+authors = ["Marcos Helbert"]
 edition = "2024"
+
+[build-dependencies]
 
 [dependencies]
 logos = "0.15.0"

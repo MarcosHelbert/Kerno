@@ -1,21 +1,38 @@
+const algo = "valor"
+const algo2:string = "valor2"
+
+const valor = 10
+valor += 10
+valor *= 10;
+valor /= 100;
+valor++
+
 function soma(a: int, b: int): int {
     return a + b;
 }
+
+function algo(a:int = 1, b = 2, c = 3) {
+    return a + b + c
+}
+algo(2)
+algo(2, 3)
+algo(2, c = 4)
+algo(a = 4, b = 7, c = 10)
 
 async function buscaDados(url: string, timeout?: int): string {
     return "resultado fictício";
 }
 
 function processaLista(itens: list<int>): int {
-    var total: int = 0;
-    for (var i in itens) {
+    let total: int = 0;
+    for (let i in itens) {
         total = total + i;
     }
     return total;
 }
 
 function criaMapa(): map<string, int> {
-    var mapa: map<string, int> = {
+    let mapa: map<string, int> = {
         "chave1": 10,
         "chave2": 20,
     };
@@ -31,20 +48,20 @@ function usaSet(conjunto: set<int>) {
 }
 
 function main() {
-    var x: int = 5;
-    var y: int = 7;
-    var resultado: int = soma(x, y);
+    let x: int = 5;
+    let y: int = 7;
+    let resultado: int = soma(x, y);
 
-    var lista: list<int> = [1, 2, 3, 4, 5];
-    var totalLista: int = processaLista(lista);
+    let lista: list<int> = [1, 2, 3, 4, 5];
+    let totalLista: int = processaLista(lista);
 
-    var mapa = criaMapa();
+    let mapa = criaMapa();
 
-    var t = testeTupla();
+    let t = testeTupla();
 
     usaSet({1, 2, 3, 4});
 
-    var resposta: string = buscaDados("http://exemplo.com");
+    let resposta: string = buscaDados("http://exemplo.com");
 
     return;
 }

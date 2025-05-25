@@ -26,8 +26,6 @@ pub enum Token {
     #[token("decimal")] DecimalType,
     #[token("void")] VoidType,
     #[token("null")] NullLiteral,
-    #[token("true")] TrueLiteral,
-    #[token("false")] FalseLiteral,
 
     // ─── Tipos compostos ──────────────────────────────────────
     #[token("list")] ListType,
@@ -45,6 +43,19 @@ pub enum Token {
     #[token("<=")] LessEqual,
     #[token("&&")] AndAnd,
     #[token("||")] OrOr,
+    #[token("+=")] PlusEqual,
+    #[token("-=")] MinusEqual,
+    #[token("*=")] StarEqual,
+    #[token("/=")] SlashEqual,
+    #[token("%=")] PercentEqual,
+    #[token("**")] StarStar,
+    #[token("++")] PlusPlus,
+    #[token("--")] MinusMinus,
+    #[token("&=")] AndEqual,
+    #[token("|=")] OrEqual,
+    #[token("^=")] CaretEqual,
+    #[token(">>=")] RShiftEqual,
+    #[token("<<=")] LShiftEqual,
 
     // ─── Operadores simples ──────────────────────────────────
     #[token("=")] Equals,
@@ -57,6 +68,11 @@ pub enum Token {
     #[token("%")] Percent,
     #[token(">")] Greater,
     #[token("<")] Less,
+    #[token("&")] Ampersand,
+    #[token("|")] Pipe,
+    #[token("^")] Caret,
+    #[token(">>")] RShift,
+    #[token("<<")] LShift,
 
     // ─── Símbolos ─────────────────────────────────────────────
     #[token("(")] LParen,
@@ -74,6 +90,7 @@ pub enum Token {
     #[token("]")] RBracket,
 
     // ─── Literais e Identificadores ───────────────────────────
+    #[regex("true|false")] BooleanLiteral,
     #[regex(r"[0-9]+\.[0-9]+m")] DecimalLiteral,
     #[regex(r"[0-9]+\.[0-9]+")] FloatLiteral,
     #[regex(r"[0-9]+")] IntLiteral,
@@ -81,35 +98,7 @@ pub enum Token {
     #[regex("[a-zA-Z_][a-zA-Z0-9_]*")] Ident,
 
     // ─── Ignorados ────────────────────────────────────────────
-    #[regex(r"[ \t\n\f]+", logos::skip)] Whitespace,
-    #[regex(r"//[^\n]*", logos::skip)] Comment,
-    #[regex(r"/\*([^*]|\*[^/])*\*/", logos::skip)] BlockComment,
-}
-
-#[allow(dead_code)]
-#[derive(Debug, Clone, PartialEq)]
-pub struct SpannedToken<'a> {
-    pub token: Token,
-    pub slice: &'a str,
-    pub span: std::ops::Range<usize>,
-}
-
-pub fn lexer<'a>(source: &'a str) -> Vec<SpannedToken<'a>> {
-    let mut lex = Token::lexer(source);
-    let mut tokens = Vec::new();
-
-    while let Some(res) = lex.next() {
-        let span = lex.span();
-        let slice = &source[span.clone()];
-
-        match res {
-            Ok(token) => tokens.push(SpannedToken { token, slice, span }),
-            Err(_) => {
-                // TODO: registrar erro, warning, etc.
-                // por enquanto, ignoramos o erro
-            }
-        }
-    }
-
-    tokens
+    #[regex(r"[ \t\n\f]+")] Whitespace,
+    #[regex(r"//[^\n]*")] Comment,
+    #[regex(r"/\*([^*]|\*[^/])*\*/")] BlockComment,
 }

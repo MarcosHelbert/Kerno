@@ -1,4 +1,3 @@
-#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub enum Type {
     Int,
@@ -9,7 +8,7 @@ pub enum Type {
     Void,
 
     List(Box<Type>),
-    Array(Box<Type>, usize),
+    Array(Box<Type>), // remove tamanho fixo, ou implementa em outro lugar
     Map(Box<Type>, Box<Type>),
     Set(Box<Type>),
     Tuple(Vec<Type>),
@@ -77,6 +76,12 @@ pub enum BinaryOperator {
     LessEqual,
     And,
     Or,
+
+    PlusEqual,
+    MinusEqual,
+    StarEqual,
+    SlashEqual,
+    PercentEqual,
 }
 
 #[allow(dead_code)]
